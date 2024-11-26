@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">IMDMARKETKOTLIN</string>
+    <string name="app_login">Login</string>
+    <string name="app_senha">Senha</string>
+    <string name="app_esqueciSenha">Esqueci minha senha/login</string>
+    <string name="app_cadastra">Cadastrar Produto</string>
+
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvLogo2"
+        android:layout_width="413dp"
+        android:layout_height="76dp"
+        android:background="#FD8B00"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="O que deseja fazer?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogo2" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="111dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="44dp"
+        android:background="#B416CC"
+        android:text="Cadastrar Produto"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btnListar"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <Button
+        android:id="@+id/btnListar"
+        android:layout_width="111dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="52dp"
+        android:background="#B416CC"
+        android:text="Listar Produtos"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <Button
+        android:id="@+id/btnDeletar"
+        android:layout_width="111dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="52dp"
+        android:background="#B416CC"
+        android:text="Deletar Produto"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnListar" />
+
+    <Button
+        android:id="@+id/btnAlterar"
+        android:layout_width="111dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="72dp"
+        android:background="#B416CC"
+        android:text="Alterar Produto"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/btnDeletar"
+        app:layout_constraintTop_toBottomOf="@+id/btnCadastrar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
