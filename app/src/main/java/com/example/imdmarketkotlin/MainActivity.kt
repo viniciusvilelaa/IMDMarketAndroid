@@ -30,18 +30,20 @@ class MainActivity : AppCompatActivity(){
         }
 
         binding.btnEntrar.setOnClickListener{
-            var veriLogin = login.toString()
-            var veriSenha = senha.toString()
+            var veriLogin = binding.edName.text.toString()
+            var veriSenha = binding.edSenha.text.toString()
 
 
             if (veriLogin.isNotEmpty() && veriSenha.isNotEmpty() ){
-                if (veriLogin.equals("admin") && veriSenha.equals("admin")){
-                    val i = Intent(this, InicialActivity::class.java)
-                    i.putExtra("nomeUsuario", veriLogin)
-                    startActivity(i)
+                if (veriLogin == ("admin") && veriSenha == ("admin")){
                     editor.putString("LOGIN", veriLogin)
                     editor.putString("SENHA", veriSenha)
                     editor.apply()
+                    val i = Intent(this, InicialActivity::class.java)
+                    Toast.makeText(this, "Senha correta", Toast.LENGTH_LONG).show()
+                    i.putExtra("nomeUsuario", veriLogin)
+                    startActivity(i)
+
 
                 } else{
                     Toast.makeText(this, "Usuário ou Senha incorretos!", Toast.LENGTH_LONG).show()
