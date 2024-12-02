@@ -28,7 +28,7 @@
         android:text="Limpar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btAlterar"
+        app:layout_constraintStart_toEndOf="@+id/btnSalvar"
         app:layout_constraintTop_toBottomOf="@+id/edCodigo2" />
 
     <EditText
