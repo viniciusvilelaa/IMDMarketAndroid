@@ -16,13 +16,54 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.IMDMARKETKOTLIN">
+            android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".InicialActivity"
+            android:exported="true"
+
+            android:theme="@style/Theme.AppCompat">
+
+
+        </activity>
+        <activity
+            android:name=".CadastroActivity"
+            android:exported="true"
+
+            android:theme="@style/Theme.AppCompat">
+
+
+        </activity>
+        <activity
+            android:name=".AlterarActivity"
+            android:exported="true"
+
+            android:theme="@style/Theme.AppCompat">
+
+
+        </activity>
+        <activity
+            android:name=".ListarActivity"
+            android:exported="true"
+
+            android:theme="@style/Theme.AppCompat">
+
+
+        </activity>
+        <activity
+            android:name=".DeletarActivity"
+            android:exported="true"
+
+            android:theme="@style/Theme.AppCompat">
+
+
+        </activity>
+
     </application>
 
 </manifest>

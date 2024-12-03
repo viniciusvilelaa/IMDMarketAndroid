@@ -98,7 +98,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textMultiLine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -114,7 +114,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/btAlterar"
+        android:id="@+id/btnSalvar"
         android:layout_width="135dp"
         android:layout_height="46dp"
         android:layout_marginStart="48dp"
@@ -126,7 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edEstoque" />
 
     <Button
-        android:id="@+id/btSalvar"
+        android:id="@+id/btnLimpar"
         android:layout_width="135dp"
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
@@ -134,6 +134,6 @@
         android:background="#B416CC"
         android:text="Limpar"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/btAlterar"
+        app:layout_constraintStart_toEndOf="@+id/btnSalvar"
         app:layout_constraintTop_toBottomOf="@+id/edEstoque" />
 </androidx.constraintlayout.widget.ConstraintLayout>
