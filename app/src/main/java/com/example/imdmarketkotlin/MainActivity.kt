@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity(){
                 Toast.makeText(this, "Preencha os campos de Usuário ou Senha!", Toast.LENGTH_LONG).show()
             }
         }
+        
 
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btDeletar"
+        android:id="@+id/btnDeletar"
         android:layout_width="135dp"
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edCodigo2" />
 
     <Button
-        android:id="@+id/btLimpar"
+        android:id="@+id/btnLimpar"
         android:layout_width="135dp"
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
@@ -28,7 +28,6 @@
         android:text="Limpar"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSalvar"
         app:layout_constraintTop_toBottomOf="@+id/edCodigo2" />
 
     <EditText
