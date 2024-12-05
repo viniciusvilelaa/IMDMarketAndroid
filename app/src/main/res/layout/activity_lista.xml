@@ -30,24 +30,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="412dp"
-        android:layout_height="472dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:listitem="@android:layout/list_content" />
-
     <Button
         android:id="@+id/btnVoltar"
         android:layout_width="113dp"
         android:layout_height="62dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="32dp"
         android:background="#B416CC"
         android:text="VOLTAR"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProdutos"
+        android:layout_width="410dp"
+        android:layout_height="452dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

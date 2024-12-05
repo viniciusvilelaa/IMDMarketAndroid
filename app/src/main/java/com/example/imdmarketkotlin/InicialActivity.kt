@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityInicialBinding
+import com.example.imdmarketkotlin.databinding.ActivityListaBinding
 
 
 class InicialActivity : AppCompatActivity() {
@@ -26,8 +27,11 @@ class InicialActivity : AppCompatActivity() {
         }
 
         binding.btnListar.setOnClickListener {
-            val i = Intent(this, ListarActivity::class.java)
-            startActivity(i)
+            val produtos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: arrayListOf()
+            val intent = Intent(this, ListarActivity::class.java)
+            intent.putParcelableArrayListExtra("produtos", produtos)
+
+            startActivity(intent)
         }
 
         binding.btnDeletar.setOnClickListener {
