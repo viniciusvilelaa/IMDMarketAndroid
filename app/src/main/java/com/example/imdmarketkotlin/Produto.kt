@@ -2,13 +2,13 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.serialization.Serializable
 
-
+@Serializable
 data class Produto(
     val codigoProduto: String,
     val nomeProduto: String,
     val descProduto: String,
     val estoque: Int
-) : Parcelable {
+) : Parcelable{
     // Constructor for reading from Parcel
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",  // codigoProduto

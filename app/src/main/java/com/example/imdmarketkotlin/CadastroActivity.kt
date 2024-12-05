@@ -9,20 +9,23 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityCadastroBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.serialization.SerializationStrategy
+import kotlinx.serialization.json.Json
 import java.io.File
 
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastroBinding
-
+    var fileManip = FileManip()
     var listaProdutos = mutableListOf<Produto>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCadastroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        listaProdutos = fileManip.loadListaProdutos(this)
 
         val i = Intent(this, InicialActivity::class.java)
 
@@ -56,6 +59,13 @@ class CadastroActivity : AppCompatActivity() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        val fileManip = FileManip()
+        fileManip.saveListaProdutos(this, listaProdutos)
+
+
+    }
 
 
 
