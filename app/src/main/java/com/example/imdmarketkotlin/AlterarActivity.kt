@@ -1,5 +1,6 @@
 package com.example.imdmarketkotlin
 
+import Produto
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import kotlin.text.clear
 
 class AlterarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlterarBinding
+    var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,4 +29,13 @@ class AlterarActivity : AppCompatActivity() {
             var estoqueTemp = binding.edEstoque.text.clear()
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val fileManip = FileManip()
+        fileManip.saveListaProdutos(this, listaProdutos)
+
+
+    }
 }
+

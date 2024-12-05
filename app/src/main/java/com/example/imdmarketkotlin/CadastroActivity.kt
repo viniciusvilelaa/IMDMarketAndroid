@@ -16,7 +16,7 @@ import java.io.File
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastroBinding
-    var fileManip = FileManip()
+    val fileManip = FileManip()
     var listaProdutos = mutableListOf<Produto>()
 
 

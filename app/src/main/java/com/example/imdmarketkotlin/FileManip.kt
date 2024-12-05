@@ -1,4 +1,5 @@
 package com.example.imdmarketkotlin
+import Produto
 import kotlinx.serialization.decodeFromString
 
 import android.content.Context
@@ -23,7 +24,7 @@ class FileManip  {
             Json.decodeFromString(jsonString)
 
         } catch (e: Exception){
-            emptyList()
+            mutableListOf()
         }
     }
 

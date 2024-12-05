@@ -1,5 +1,6 @@
 package com.example.imdmarketkotlin
 
+import Produto
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,7 @@ import com.example.imdmarketkotlin.databinding.ActivityDeletarBinding
 
 class DeletarActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDeletarBinding
+     var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,12 @@ class DeletarActivity : AppCompatActivity() {
         }
 
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        val fileManip = FileManip()
+        fileManip.saveListaProdutos(this, listaProdutos)
 
+
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.imdmarketkotlin
 
+import Produto
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,7 @@ import com.example.imdmarketkotlin.databinding.ActivityListaBinding
 
 class InicialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInicialBinding
-
+    val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,26 +18,28 @@ class InicialActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnCadastrar.setOnClickListener{
+
             val i = Intent(this, CadastroActivity::class.java)
             startActivity(i)
         }
 
         binding.btnAlterar.setOnClickListener{
-            val i = Intent(this, AlterarActivity::class.java)
-            startActivity(i)
+            val intent = Intent(this, AlterarActivity::class.java)
+            intent.putParcelableArrayListExtra("produtos", listaProdutos)
+            startActivity(intent)
         }
 
         binding.btnListar.setOnClickListener {
-            val produtos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: arrayListOf()
-            val intent = Intent(this, ListarActivity::class.java)
-            intent.putParcelableArrayListExtra("produtos", produtos)
 
+            val intent = Intent(this, ListarActivity::class.java)
+            intent.putParcelableArrayListExtra("produtos", listaProdutos)
             startActivity(intent)
         }
 
         binding.btnDeletar.setOnClickListener {
-            val i = Intent(this, DeletarActivity::class.java)
-            startActivity(i)
+            val intent = Intent(this, DeletarActivity::class.java)
+            intent.putParcelableArrayListExtra("produtos", listaProdutos)
+            startActivity(intent)
         }
 
 
@@ -45,5 +48,11 @@ class InicialActivity : AppCompatActivity() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        val fileManip = FileManip()
+        fileManip.saveListaProdutos(this, listaProdutos)
 
+
+    }
 }
