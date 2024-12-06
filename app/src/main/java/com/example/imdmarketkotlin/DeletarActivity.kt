@@ -3,6 +3,7 @@ package com.example.imdmarketkotlin
 import Produto
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityDeletarBinding
 
@@ -10,7 +11,7 @@ class DeletarActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDeletarBinding
 
     //Recebendo a listaProdutos por intent
-     var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
+    private var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,20 @@ class DeletarActivity : AppCompatActivity() {
 
         val i = Intent(this, InicialActivity::class.java)
 
+        //Deletando o produto
         binding.btnDeletar.setOnClickListener{
+            val codigoTemp = binding.edCodigo2.text.toString()
+            val produtoTemp = listaProdutos.find { it.codigoProduto == codigoTemp }
+
+            //Verifica se existe o produto com o codigo informado, se existir, produto é excluido
+            if (produtoTemp != null){
+                listaProdutos.remove(produtoTemp)
+                Toast.makeText(this, "Produto excluido", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this, "Nenhum produto encontrado com o codigo informado", Toast.LENGTH_LONG).show()
+            }
+            //Enviando listaProdutos por intent para a tela inicial
+            i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
             startActivity(i)
         }
 

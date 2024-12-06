@@ -47,10 +47,11 @@ class CadastroActivity : AppCompatActivity() {
                 val produtoTemp = Produto(codigoTemp,nomeTemp,descTemp,estoqueTemp.toInt())
                 //Verificando se ja existe o produto na lista
                 if (listaProdutos.contains(produtoTemp)){
-                    Toast.makeText(this, "Este produto ja existe no banco de dados", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Este produto já está cadastrado", Toast.LENGTH_LONG).show()
 
                 }else{
                     listaProdutos.add(produtoTemp)
+                    //Enviando listaProdutos por intent para a tela inicial
                     i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
                     Toast.makeText(this, "Produto salvo!", Toast.LENGTH_LONG).show()
                 }
