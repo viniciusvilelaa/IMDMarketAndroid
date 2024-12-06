@@ -59,8 +59,8 @@ data class Produto(
         this.descProduto = descProduto
     }
 
-    fun setEstoque(estoque: Int){
+    /*fun setEstoque(estoque: Int){
         this.estoque = estoque
-    }
+    }*/
 
 }

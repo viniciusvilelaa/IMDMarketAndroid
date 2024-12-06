@@ -16,7 +16,7 @@ class ListarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListaBinding
 
     //Recebendo a listaProdutos por intent
-    val listaProdutos =  intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
+    val listaProdutos =  intent?.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

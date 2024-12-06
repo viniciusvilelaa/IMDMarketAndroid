@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 
+    //Instanciando a lista
+    //var listaProdutos = mutableListOf<Produto>()
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -48,6 +51,7 @@ class MainActivity : AppCompatActivity(){
                     editor.putString("SENHA", veriSenha)
                     editor.apply()
                     val i = Intent(this, InicialActivity::class.java)
+                    //i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
                     Toast.makeText(this, "Senha correta", Toast.LENGTH_LONG).show()
                     i.putExtra("nomeUsuario", veriLogin)
                     startActivity(i)

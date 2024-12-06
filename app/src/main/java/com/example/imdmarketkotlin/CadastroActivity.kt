@@ -17,11 +17,12 @@ import java.io.File
 class CadastroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastroBinding
 
+    private var listaProdutos = intent.extras?.getParcelableArrayList<Produto>("produtos") ?: mutableListOf<Produto>()
+
     //Instanciando a classe de manipulação de arquivos
     val fileManip = FileManip()
 
-    //Instanciando a lista
-    var listaProdutos = mutableListOf<Produto>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class CadastroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Carregando arquivo json com a lista de produtos
-        listaProdutos = fileManip.loadListaProdutos(this)
+        //listaProdutos = fileManip.loadListaProdutos(this)
 
         val i = Intent(this, InicialActivity::class.java)
 
@@ -53,7 +54,10 @@ class CadastroActivity : AppCompatActivity() {
                     listaProdutos.add(produtoTemp)
                     //Enviando listaProdutos por intent para a tela inicial
                     i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
-                    Toast.makeText(this, "Produto salvo!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "{$listaProdutos}!", Toast.LENGTH_LONG).show()
+                    println(listaProdutos)
+
+
                 }
 
             }else{

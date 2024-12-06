@@ -12,8 +12,9 @@ class InicialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInicialBinding
 
     //Recebendo a listaProdutos por intent
-    private val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: ArrayList()
 
+
+    val intentIni = intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,14 +23,17 @@ class InicialActivity : AppCompatActivity() {
 
         //Chamada para tela de cadastro
         binding.btnCadastrar.setOnClickListener{
-
-            val i = Intent(this, CadastroActivity::class.java)
-            startActivity(i)
+            val intent = Intent(this, CadastroActivity::class.java)
+            val listaProdutos = intent.extras?.getParcelableArrayList<Produto>("produtos") ?: arrayListOf()
+            println(listaProdutos)
+            intent.extras?.putParcelableArrayList("produtos", listaProdutos)
+            startActivity(intent)
         }
 
         //Chamada para tela de alteração
         binding.btnAlterar.setOnClickListener{
             val intent = Intent(this, AlterarActivity::class.java)
+            val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos.json") ?: arrayListOf()
             intent.putParcelableArrayListExtra("produtos", listaProdutos)
             startActivity(intent)
         }
@@ -38,6 +42,7 @@ class InicialActivity : AppCompatActivity() {
         binding.btnListar.setOnClickListener {
 
             val intent = Intent(this, ListarActivity::class.java)
+            val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos.json") ?: arrayListOf()
             intent.putParcelableArrayListExtra("produtos", listaProdutos)
             startActivity(intent)
         }
@@ -45,6 +50,7 @@ class InicialActivity : AppCompatActivity() {
         //Chamada para tela de delete
         binding.btnDeletar.setOnClickListener {
             val intent = Intent(this, DeletarActivity::class.java)
+            val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos.json") ?: arrayListOf()
             intent.putParcelableArrayListExtra("produtos", listaProdutos)
             startActivity(intent)
         }
@@ -54,6 +60,7 @@ class InicialActivity : AppCompatActivity() {
     //Salvando arquivo ao fechar o programa/activity
     override fun onDestroy() {
         super.onDestroy()
+        val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: arrayListOf()
         val fileManip = FileManip()
         fileManip.saveListaProdutos(this, listaProdutos)
 

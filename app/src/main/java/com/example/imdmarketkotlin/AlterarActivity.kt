@@ -12,7 +12,7 @@ class AlterarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlterarBinding
 
     //Recebendo a listaProdutos por intent
-    var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
+    var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos.json") ?: arrayListOf()
 
 
 
@@ -39,7 +39,7 @@ class AlterarActivity : AppCompatActivity() {
                     produtoTemp?.setDesc(descTemp)
                 }
                 if (estoqueTemp.isNotEmpty()){
-                    produtoTemp?.setEstoque(estoqueTemp.toInt())
+                    produtoTemp?.estoque = estoqueTemp.toInt()
                 }
             }
 
