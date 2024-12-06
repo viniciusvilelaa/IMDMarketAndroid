@@ -2,6 +2,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.serialization.Serializable
 
+//Classe produto serializada para conseguir transferir por intent
 @Serializable
 data class Produto(
     val codigoProduto: String,

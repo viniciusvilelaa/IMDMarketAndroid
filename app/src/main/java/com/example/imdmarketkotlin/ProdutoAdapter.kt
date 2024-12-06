@@ -1,10 +1,12 @@
 package com.example.imdmarketkotlin
 
+import Produto
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
+//Classe de configuração do RecycleView Adapter
 class ProdutoAdapter(private val produtos: List<Produto>) : RecyclerView.Adapter<ProdutoViewHolder>() {
 
 

@@ -9,7 +9,11 @@ import kotlin.text.clear
 
 class AlterarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlterarBinding
+
+    //Recebendo a listaProdutos por intent
     var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +26,7 @@ class AlterarActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        //Botão para limpar os campos
         binding.btnLimpar.setOnClickListener{
             var codigoTemp = binding.edCodigo.text.clear()
             var nomeTemp = binding.edNome.text.clear()
@@ -30,6 +35,7 @@ class AlterarActivity : AppCompatActivity() {
         }
     }
 
+    //Salvando arquivo ao fechar o programa/activity
     override fun onDestroy() {
         super.onDestroy()
         val fileManip = FileManip()

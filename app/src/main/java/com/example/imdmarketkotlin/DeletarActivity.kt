@@ -8,6 +8,8 @@ import com.example.imdmarketkotlin.databinding.ActivityDeletarBinding
 
 class DeletarActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDeletarBinding
+
+    //Recebendo a listaProdutos por intent
      var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,8 @@ class DeletarActivity : AppCompatActivity() {
         }
 
     }
+
+    //Salvando arquivo ao fechar o programa/activity
     override fun onDestroy() {
         super.onDestroy()
         val fileManip = FileManip()
