@@ -5,10 +5,10 @@ import kotlinx.serialization.Serializable
 //Classe produto serializada para conseguir transferir por intent
 @Serializable
 data class Produto(
-    val codigoProduto: String,
-    val nomeProduto: String,
-    val descProduto: String,
-    val estoque: Int
+    var codigoProduto: String,
+    var nomeProduto: String,
+    var descProduto: String,
+    var estoque: Int
 ) : Parcelable{
     // Constructor for reading from Parcel
     constructor(parcel: Parcel) : this(
@@ -39,4 +39,28 @@ data class Produto(
             return arrayOfNulls(size)
         }
     }
+
+    //Getters
+    fun getCodigo() : String {
+        return this.codigoProduto
+    }
+
+    fun getNome() : String{
+        return this.nomeProduto
+    }
+
+
+    //Setters
+    fun setNome(nomeProduto: String){
+        this.nomeProduto = nomeProduto
+    }
+
+    fun setDesc(descProduto: String){
+        this.descProduto = descProduto
+    }
+
+    fun setEstoque(estoque: Int){
+        this.estoque = estoque
+    }
+
 }
