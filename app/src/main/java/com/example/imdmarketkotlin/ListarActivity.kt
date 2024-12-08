@@ -1,22 +1,21 @@
 package com.example.imdmarketkotlin
 
 import Produto
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.imdmarketkotlin.databinding.ActivityListaBinding
-import com.google.gson.Gson
-import java.io.File
 
 class ListarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListaBinding
 
     //Recebendo a listaProdutos por intent
-    val listaProdutos =  intent?.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
+
+    private val listaProdutos = mutableListOf<Produto>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,15 +23,20 @@ class ListarActivity : AppCompatActivity() {
         binding = ActivityListaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf<Produto>()
+        listaProdutos.addAll(produtosRecebidos)
+
+
         //Configurando o RecycleView e alimentando com a listaProdutos
         val recyclerView: RecyclerView = binding.rvProdutos
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = ProdutoAdapter(listaProdutos)
+        val adapter = ProdutoAdapter(produtosRecebidos)
         recyclerView.adapter = adapter
 
         //Botão para voltar
         binding.btnVoltar.setOnClickListener {
             val i = Intent(this, InicialActivity::class.java)
+            i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
             startActivity(i)
         }
 

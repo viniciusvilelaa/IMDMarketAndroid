@@ -1,34 +1,29 @@
 package com.example.imdmarketkotlin
 
 import Produto
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityCadastroBinding
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.serialization.SerializationStrategy
-import kotlinx.serialization.json.Json
-import java.io.File
 
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastroBinding
 
-    private var listaProdutos = intent.extras?.getParcelableArrayList<Produto>("produtos") ?: mutableListOf<Produto>()
 
     //Instanciando a classe de manipulação de arquivos
-    val fileManip = FileManip()
-
-
+    //val fileManip = FileManip()
+    private val listaProdutos = mutableListOf<Produto>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCadastroBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?: mutableListOf<Produto>()
+        listaProdutos.addAll(produtosRecebidos)
 
         //Carregando arquivo json com a lista de produtos
         //listaProdutos = fileManip.loadListaProdutos(this)
@@ -51,11 +46,14 @@ class CadastroActivity : AppCompatActivity() {
                     Toast.makeText(this, "Este produto já está cadastrado", Toast.LENGTH_LONG).show()
 
                 }else{
+                    println(listaProdutos)
                     listaProdutos.add(produtoTemp)
                     //Enviando listaProdutos por intent para a tela inicial
-                    i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
+                    var intent = Intent(this, InicialActivity::class.java)
+                    intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
                     Toast.makeText(this, "{$listaProdutos}!", Toast.LENGTH_LONG).show()
                     println(listaProdutos)
+                    startActivity(intent)
 
 
                 }
@@ -64,7 +62,7 @@ class CadastroActivity : AppCompatActivity() {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_LONG).show()
             }
 
-            startActivity(i)
+
 
         }
 

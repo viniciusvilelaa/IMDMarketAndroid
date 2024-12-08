@@ -11,13 +11,15 @@ class DeletarActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDeletarBinding
 
     //Recebendo a listaProdutos por intent
-    private var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf()
+    private val listaProdutos = mutableListOf<Produto>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDeletarBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        var produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?:mutableListOf<Produto>()
+        listaProdutos.addAll(produtosRecebidos)
 
         val i = Intent(this, InicialActivity::class.java)
 

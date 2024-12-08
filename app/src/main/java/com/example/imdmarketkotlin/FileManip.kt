@@ -6,7 +6,7 @@ import android.content.Context
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
-import java.io.File
+import java.util.ArrayList
 
 //Classe FileManip para realizar a manipulação dos arquivos
 class FileManip  {

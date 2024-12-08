@@ -6,13 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityAlterarBinding
-import kotlin.text.clear
 
 class AlterarActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlterarBinding
 
-    //Recebendo a listaProdutos por intent
-    var listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos.json") ?: arrayListOf()
+    private val listaProdutos = mutableListOf<Produto>()
 
 
 
@@ -21,7 +19,8 @@ class AlterarActivity : AppCompatActivity() {
         binding = ActivityAlterarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val i = Intent(this, InicialActivity::class.java)
+        val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf<Produto>()
+        listaProdutos.addAll(produtosRecebidos)
 
         binding.btnSalvar.setOnClickListener{
             val codigoTemp = binding.edCodigo.text.toString()
@@ -45,8 +44,9 @@ class AlterarActivity : AppCompatActivity() {
 
             Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_LONG).show()
             //Enviando listaProdutos por intent para a tela inicial
-            i.putParcelableArrayListExtra("produtos.json", ArrayList(listaProdutos))
-            startActivity(i)
+            val intent = Intent(this, InicialActivity::class.java)
+            intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
+            startActivity(intent)
         }
 
         //Botão para limpar os campos
