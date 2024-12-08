@@ -19,6 +19,7 @@ class AlterarActivity : AppCompatActivity() {
         binding = ActivityAlterarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Recebendo lista de produtos por intent
         val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf<Produto>()
         listaProdutos.addAll(produtosRecebidos)
 
@@ -43,6 +44,7 @@ class AlterarActivity : AppCompatActivity() {
             }
 
             Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_LONG).show()
+            
             //Enviando listaProdutos por intent para a tela inicial
             val intent = Intent(this, InicialActivity::class.java)
             intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))

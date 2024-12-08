@@ -14,6 +14,8 @@ class CadastroActivity : AppCompatActivity() {
 
     //Instanciando a classe de manipulação de arquivos
     //val fileManip = FileManip()
+
+    //Criando a lista de produtos
     private val listaProdutos = mutableListOf<Produto>()
 
 
@@ -22,6 +24,7 @@ class CadastroActivity : AppCompatActivity() {
         binding = ActivityCadastroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Recebendo lista de produtos por intent
         val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?: mutableListOf<Produto>()
         listaProdutos.addAll(produtosRecebidos)
 
@@ -48,6 +51,7 @@ class CadastroActivity : AppCompatActivity() {
                 }else{
                     println(listaProdutos)
                     listaProdutos.add(produtoTemp)
+
                     //Enviando listaProdutos por intent para a tela inicial
                     var intent = Intent(this, InicialActivity::class.java)
                     intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))

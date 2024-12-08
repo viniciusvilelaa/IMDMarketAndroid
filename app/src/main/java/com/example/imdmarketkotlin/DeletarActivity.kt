@@ -18,6 +18,8 @@ class DeletarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDeletarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Recebendo lista de produtos por intent
         var produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?:mutableListOf<Produto>()
         listaProdutos.addAll(produtosRecebidos)
 

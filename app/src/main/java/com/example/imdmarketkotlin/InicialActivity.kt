@@ -15,17 +15,15 @@ class InicialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInicialBinding
 
 
-    //private val listaProdutos = mutableListOf<Produto>()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInicialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Recebendo lista de produtos por intent
         val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?: mutableListOf<Produto>()
-        //listaProdutos.addAll(produtosRecebidos)
+
 
         //Chamada para tela de cadastro
         binding.btnCadastrar.setOnClickListener{
@@ -62,11 +60,11 @@ class InicialActivity : AppCompatActivity() {
     }
 
     //Salvando arquivo ao fechar o programa/activity
-   /* override fun onDestroy() {
+    override fun onDestroy() {
         super.onDestroy()
-        val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: arrayListOf()
+        val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf<Produto>()
         val fileManip = FileManip()
         fileManip.saveListaProdutos(this, listaProdutos)
 
-    }*/
+    }
 }
