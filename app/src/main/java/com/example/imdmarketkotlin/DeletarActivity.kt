@@ -42,7 +42,12 @@ class DeletarActivity : AppCompatActivity() {
             startActivity(i)
         }
 
+        binding.btnLimpar.setOnClickListener{
+            binding.edCodigo2.text.clear()
+        }
+
     }
+
 
     //Salvando arquivo ao fechar o programa/activity
     override fun onDestroy() {

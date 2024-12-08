@@ -28,27 +28,39 @@ class AlterarActivity : AppCompatActivity() {
             val nomeTemp = binding.edNome.text.toString()
             val descTemp = binding.edDesc.text.toString()
             val estoqueTemp = binding.edEstoque.text.toString()
+            val intent = Intent(this, InicialActivity::class.java)
 
             //Alterando os dados do produto
-            if (codigoTemp.isNotEmpty()){
+            if (codigoTemp.isNotBlank()){
                 val produtoTemp = listaProdutos.find { it.codigoProduto == codigoTemp }
-                if (nomeTemp.isNotEmpty()){
-                    produtoTemp?.setNome(nomeTemp)
+                if (listaProdutos.contains(produtoTemp)){
+                    if (nomeTemp.isNotEmpty()){
+                        produtoTemp?.setNome(nomeTemp)
+                    }
+                    if (descTemp.isNotEmpty()){
+                        produtoTemp?.setDesc(descTemp)
+                    }
+                    if (estoqueTemp.isNotEmpty()){
+                        produtoTemp?.estoque = estoqueTemp.toInt()
+                    }
+                }else{
+                    Toast.makeText(this, "Produto nao encontrado!", Toast.LENGTH_LONG).show()
+                    startActivity(intent)
                 }
-                if (descTemp.isNotEmpty()){
-                    produtoTemp?.setDesc(descTemp)
-                }
-                if (estoqueTemp.isNotEmpty()){
-                    produtoTemp?.estoque = estoqueTemp.toInt()
-                }
+                Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_LONG).show()
+                intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
+                startActivity(intent)
+
+            }else{
+                Toast.makeText(this, "Informe um codigo!", Toast.LENGTH_LONG).show()
+                startActivity(intent)
             }
 
-            Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_LONG).show()
-            
+
+
             //Enviando listaProdutos por intent para a tela inicial
-            val intent = Intent(this, InicialActivity::class.java)
-            intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
-            startActivity(intent)
+
+
         }
 
         //Botão para limpar os campos
