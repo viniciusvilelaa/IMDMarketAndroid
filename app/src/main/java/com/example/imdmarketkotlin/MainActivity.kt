@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityMainBinding
 
-    //Instanciando a lista
-    //var listaProdutos = mutableListOf<Produto>()
+
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)

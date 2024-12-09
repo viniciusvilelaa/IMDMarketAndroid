@@ -14,16 +14,19 @@ import java.util.ArrayList
 class InicialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInicialBinding
 
-
+    private var arquivoLista = mutableListOf<Produto>()
+    val fileManip = FileManip()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInicialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        arquivoLista = fileManip.loadListaProdutos(this,"produtos.json")
+
         //Recebendo lista de produtos por intent
         val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?: mutableListOf<Produto>()
-
+        produtosRecebidos.addAll(arquivoLista)
 
         //Chamada para tela de cadastro
         binding.btnCadastrar.setOnClickListener{
@@ -63,7 +66,6 @@ class InicialActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         val listaProdutos = intent.getParcelableArrayListExtra<Produto>("produtos") ?: mutableListOf<Produto>()
-        val fileManip = FileManip()
         fileManip.saveListaProdutos(this, listaProdutos)
 
     }

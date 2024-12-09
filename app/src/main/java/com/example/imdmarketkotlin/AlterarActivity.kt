@@ -58,7 +58,7 @@ class AlterarActivity : AppCompatActivity() {
 
 
 
-            //Enviando listaProdutos por intent para a tela inicial
+
 
 
         }

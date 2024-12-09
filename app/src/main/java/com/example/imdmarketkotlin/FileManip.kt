@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
 import java.util.ArrayList
 
-//Classe FileManip para realizar a manipulação dos arquivos
+//Classe FileManip para realizar a manipulação do arquivos
 class FileManip  {
 
     //Salva o arquivo com a lista de produtos
