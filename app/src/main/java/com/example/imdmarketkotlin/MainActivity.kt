@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val arquivoLista = FileManip().loadListaProdutos(this,"produtos.json")
         //Salvando o login com SharedPreferences
         val sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity(){
                     editor.putString("SENHA", veriSenha)
                     editor.apply()
                     val i = Intent(this, InicialActivity::class.java)
-                    //i.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
+                    println(arquivoLista)
+                    i.putParcelableArrayListExtra("produtos", ArrayList(arquivoLista))
                     Toast.makeText(this, "Senha correta", Toast.LENGTH_LONG).show()
                     i.putExtra("nomeUsuario", veriLogin)
                     startActivity(i)

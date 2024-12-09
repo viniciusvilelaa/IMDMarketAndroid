@@ -1,12 +1,10 @@
 package com.example.imdmarketkotlin
-import Produto
 import kotlinx.serialization.decodeFromString
 
 import android.content.Context
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.encodeToString
-import java.util.ArrayList
 
 //Classe FileManip para realizar a manipulação do arquivos
 class FileManip  {
@@ -30,5 +28,6 @@ class FileManip  {
             mutableListOf()
         }
     }
+
 
 }

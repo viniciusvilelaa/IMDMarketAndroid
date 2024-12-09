@@ -1,6 +1,5 @@
 package com.example.imdmarketkotlin
 
-import Produto
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -65,10 +64,10 @@ class AlterarActivity : AppCompatActivity() {
 
         //Botão para limpar os campos
         binding.btnLimpar.setOnClickListener{
-            var codigoTemp = binding.edCodigo.text.clear()
-            var nomeTemp = binding.edNome.text.clear()
-            var descTemp = binding.edDesc.text.clear()
-            var estoqueTemp = binding.edEstoque.text.clear()
+            binding.edCodigo.text.clear()
+            binding.edNome.text.clear()
+            binding.edDesc.text.clear()
+            binding.edEstoque.text.clear()
         }
     }
 

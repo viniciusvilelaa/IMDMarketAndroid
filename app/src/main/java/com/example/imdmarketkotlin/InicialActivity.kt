@@ -1,32 +1,29 @@
 package com.example.imdmarketkotlin
 
-import Produto
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityInicialBinding
-import com.example.imdmarketkotlin.databinding.ActivityListaBinding
-import com.google.gson.Gson
 import java.util.ArrayList
 
 
 class InicialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInicialBinding
 
-    private var arquivoLista = mutableListOf<Produto>()
     val fileManip = FileManip()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInicialBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        arquivoLista = fileManip.loadListaProdutos(this,"produtos.json")
+
+
 
         //Recebendo lista de produtos por intent
         val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?: mutableListOf<Produto>()
-        produtosRecebidos.addAll(arquivoLista)
+
 
         //Chamada para tela de cadastro
         binding.btnCadastrar.setOnClickListener{

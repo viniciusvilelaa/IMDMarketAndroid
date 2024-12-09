@@ -1,3 +1,5 @@
+package com.example.imdmarketkotlin
+
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.serialization.Serializable
