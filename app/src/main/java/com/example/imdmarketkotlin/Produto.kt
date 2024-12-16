@@ -8,10 +8,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Produto(
-    var codigoProduto: String,
-    var nomeProduto: String,
-    var descProduto: String,
-    var estoque: Int
+    var codigoProduto: String = "",
+    var nomeProduto: String = "",
+    var descProduto: String = "",
+    var estoque: Int = 0
 ) : Parcelable{
     // Constructor for reading from Parcel
     constructor(parcel: Parcel) : this(
@@ -20,6 +20,9 @@ data class Produto(
         parcel.readString() ?: "",  // descProduto
         parcel.readInt()            // estoque
     )
+
+
+
 
     // Writing to Parcel
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -62,8 +65,6 @@ data class Produto(
         this.descProduto = descProduto
     }
 
-    /*fun setEstoque(estoque: Int){
-        this.estoque = estoque
-    }*/
+
 
 }

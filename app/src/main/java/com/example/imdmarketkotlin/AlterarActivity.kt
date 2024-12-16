@@ -42,23 +42,17 @@ class AlterarActivity : AppCompatActivity() {
                     if (estoqueTemp.isNotEmpty()){
                         produtoTemp?.estoque = estoqueTemp.toInt()
                     }
+                    Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_LONG).show()
                 }else{
                     Toast.makeText(this, "Produto nao encontrado!", Toast.LENGTH_LONG).show()
-                    startActivity(intent)
                 }
-                Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_LONG).show()
-                intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
-                startActivity(intent)
 
             }else{
                 Toast.makeText(this, "Informe um codigo!", Toast.LENGTH_LONG).show()
-                startActivity(intent)
             }
 
-
-
-
-
+            intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
+            startActivity(intent)
 
         }
 

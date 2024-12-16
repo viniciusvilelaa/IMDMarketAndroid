@@ -1,5 +1,4 @@
 package com.example.imdmarketkotlin
-import kotlinx.serialization.decodeFromString
 
 import android.content.Context
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -28,6 +27,5 @@ class FileManip  {
             mutableListOf()
         }
     }
-
 
 }

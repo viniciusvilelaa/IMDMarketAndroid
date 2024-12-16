@@ -73,6 +73,44 @@ class ProductDb(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         return result
     }
 
+    //Func find by codigo
+    fun findByCodigo(codigo: String) : Produto{
+        val banco = this.writableDatabase
+        val cursor = banco.rawQuery("SELECT * FROM dbproduct where codigo=$codigo", null)
+        var produto = Produto()
+        if (cursor.count > 0){
+            cursor.moveToFirst()
+            do {
+                produto.codigoProduto = cursor.getString(0)
+                produto.nomeProduto = cursor.getString(1)
+                produto.descProduto = cursor.getString(2)
+                produto.estoque = cursor.getInt(3)
+            }while (cursor.moveToNext())
+        }
+        return produto
+    }
+
+
+    //List all
+    fun listaAll() : ArrayList<Produto>{
+        val banco = this.writableDatabase
+        val cursor = banco.rawQuery("SELECT * FROM produtosdb", null)
+        val arrayProduto = ArrayList<Produto>()
+        if (cursor.count > 0){
+            cursor.moveToFirst()
+            do {
+                var codigoProduto = cursor.getString(0)
+                var nomeProduto = cursor.getString(1)
+                var descProduto = cursor.getString(2)
+                var estoque = cursor.getInt(3)
+                arrayProduto.add(Produto(codigoProduto,nomeProduto,descProduto,estoque))
+            }while (cursor.moveToNext())
+        }
+        cursor.close()
+        banco.close()
+        return arrayProduto
+
+    }
 
 
 

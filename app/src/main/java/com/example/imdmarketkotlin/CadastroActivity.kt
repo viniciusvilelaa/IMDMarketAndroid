@@ -27,10 +27,7 @@ class CadastroActivity : AppCompatActivity() {
         val produtosRecebidos = intent.getParcelableArrayListExtra<Produto>("produtos")?: mutableListOf<Produto>()
         listaProdutos.addAll(produtosRecebidos)
 
-        //Carregando arquivo json com a lista de produtos
-        //listaProdutos = fileManip.loadListaProdutos(this)
 
-        val i = Intent(this, InicialActivity::class.java)
 
         binding.btnSalvar.setOnClickListener {
 
@@ -54,12 +51,8 @@ class CadastroActivity : AppCompatActivity() {
                     //Enviando listaProdutos por intent para a tela inicial
                     var intent = Intent(this, InicialActivity::class.java)
                     intent.putParcelableArrayListExtra("produtos", ArrayList(listaProdutos))
-                    Toast.makeText(this, "{$listaProdutos}!", Toast.LENGTH_LONG).show()
-                    println(listaProdutos)
+                    Toast.makeText(this, "Produto cadastro com sucesso!", Toast.LENGTH_LONG).show()
                     startActivity(intent)
-
-
-
                 }
 
             }else{

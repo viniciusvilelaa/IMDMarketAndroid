@@ -1,12 +1,10 @@
 package com.example.imdmarketkotlin
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.imdmarketkotlin.databinding.ActivityMainBinding
-import com.example.imdmarketkotlin.ui.theme.IMDMARKETKOTLINTheme
 
 class MainActivity : AppCompatActivity(){
 
@@ -18,7 +16,10 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Carregando arquivo com os produtos
         val arquivoLista = FileManip().loadListaProdutos(this,"produtos.json")
+
         //Salvando o login com SharedPreferences
         val sharedPreferences = getSharedPreferences("LoginPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -56,7 +57,6 @@ class MainActivity : AppCompatActivity(){
                     i.putExtra("nomeUsuario", veriLogin)
                     startActivity(i)
 
-
                 } else{
                     Toast.makeText(this, "Usuário ou Senha incorretos!", Toast.LENGTH_LONG).show()
                 }
@@ -64,7 +64,6 @@ class MainActivity : AppCompatActivity(){
                 Toast.makeText(this, "Preencha os campos de Usuário ou Senha!", Toast.LENGTH_LONG).show()
             }
         }
-
 
     }
 }
